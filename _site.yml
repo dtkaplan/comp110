@@ -76,11 +76,5 @@ navbar:
             href: "Presentations/130-file-paths.html"
           - text: "Submitting your work"
             href: "Presentations/135-Submitting-files.html"
-    - text: Internals
-      menu:
-          - text: "Contact information"
-            href: https://docs.google.com/document/d/1Xlpzt5tN6wUnlIpDgspOIdq0WJBVv28VDcC6CkXuZIM/edit?usp=sharing
-            
-            
             
             
