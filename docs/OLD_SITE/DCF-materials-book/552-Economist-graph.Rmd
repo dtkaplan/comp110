@@ -1,6 +1,0 @@
-# A Graph for the Economist
-
-[PDF handout](Handouts/552-Economist-graph.pdf)
-
-   ```{r child = "Handouts/552-Economist-graph.Rmd"}
-```
