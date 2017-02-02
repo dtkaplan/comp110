@@ -28,7 +28,7 @@ Relevant links:
 * In-class activity: 
     - [The library collection](Projects/251-Library-Books-github.html)
     - file: `Week-2-project.Rmd`
-* Notes from class: [tidy data](DCF-materials-book/_book/tidy-data.html) : [R parts of speech](DCF-materials-book/_book/r-programming-parts-of-speech.html) : [highway fatality data](DCF-materials-book/_book/case-study-highway-fatalities.html)
+* Notes from class: [tidy data](DCF-materials-book/_book/tidy-data.html) : [Tidy data paper](https://www.jstatsoft.org/article/view/v059i10) : [R parts of speech](DCF-materials-book/_book/r-programming-parts-of-speech.html) : [highway fatality data](DCF-materials-book/_book/case-study-highway-fatalities.html)
 * In-class activity: 
     - [Library book use](DCF-materials-book/Handouts/251-Library-Books-github.html). 
     - Use file `Week-2-project.Rmd`
