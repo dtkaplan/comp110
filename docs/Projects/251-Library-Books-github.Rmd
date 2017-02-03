@@ -36,7 +36,7 @@ download.file("http://tiny.cc/dcf/Library-small.rda",
 ```
 You only need to do this once. You can confirm that the data file has been downloaded by going to the "Files" tab in RStudio.
 
-* Step 2. If you haven't already done so, open the `Week-1-project.Rmd` file in the RStudio editor. 
+* Step 2. If you haven't already done so, open the `Week-2-project.Rmd` file in the RStudio editor. 
 
 * Step 3. Before you add anything to the `.Rmd` file, press the "Knit" button in the editor to compile the document from `.Rmd` to `.html`.  Depending on how your RStudio system is set up, the compiled document will be displayed in either a new window or in the "Viewer" tab.  On some computers, particularly Windows, the new window may be *behind* RStudio, so if you don't see the new window immediately, look back there.
 
@@ -54,7 +54,7 @@ Compilation doesn't cost anything.  And don't think of it as the *final step*.  
 2. Put in a section header: **Basics**
 3. Under that header, put in a *chunk* that will read the data into R from the file you had already downloaded from the console, namely `Library-small.Rda`.  The contents of the chunk will be:
     ```{r eval=FALSE}
-load("Library-small.Rda")
+load("Library-small.rda")
 ```
     ```{r echo=FALSE}
 # The students will be downloading the `.rda` file into the main directory of 

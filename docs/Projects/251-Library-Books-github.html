@@ -64,7 +64,7 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
               dest=&quot;Library-small.rda&quot;)</code></pre>
 <p>You only need to do this once. You can confirm that the data file has been downloaded by going to the “Files” tab in RStudio.</p>
 <ul>
-<li><p>Step 2. If you haven’t already done so, open the <code>Week-1-project.Rmd</code> file in the RStudio editor.</p></li>
+<li><p>Step 2. If you haven’t already done so, open the <code>Week-2-project.Rmd</code> file in the RStudio editor.</p></li>
 <li><p>Step 3. Before you add anything to the <code>.Rmd</code> file, press the “Knit” button in the editor to compile the document from <code>.Rmd</code> to <code>.html</code>. Depending on how your RStudio system is set up, the compiled document will be displayed in either a new window or in the “Viewer” tab. On some computers, particularly Windows, the new window may be <em>behind</em> RStudio, so if you don’t see the new window immediately, look back there.</p></li>
 </ul>
 </div>
@@ -80,7 +80,7 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 <li>Add a sentence or two describing where you downloaded the data from, including the URL that you used to access the data file.</li>
 <li>Put in a section header: <strong>Basics</strong></li>
 <li><p>Under that header, put in a <em>chunk</em> that will read the data into R from the file you had already downloaded from the console, namely <code>Library-small.Rda</code>. The contents of the chunk will be:</p>
-<pre class="r"><code>load(&quot;Library-small.Rda&quot;)</code></pre>
+<pre class="r"><code>load(&quot;Library-small.rda&quot;)</code></pre>
 This will create two data table objects, <code>Inv</code> and <code>Bks</code>. The library’s collection is in <code>Inv</code>. The <code>Bks</code> data table is about individual books that might or might not be in the library’s collection.<br />
 </li>
 <li>Create new chunks to calculate the number of cases in each file, the names of the variables, and whatever else might occur to you. In addition, write a narrative with a short description of the contents of each file.<br />
