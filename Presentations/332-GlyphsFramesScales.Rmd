@@ -269,6 +269,19 @@ ggplot(data=Tmp, aes(x=sbp)) +
 head(Tmp,4)
 ```
 
+
+```{r echo = FALSE, warning = FALSE, message = FALSE}
+DataComputing::NCHS %>%
+  ggplot(aes(x = sex, y = height)) +
+    geom_jitter(alpha = .02) + 
+    geom_boxplot(fill=NA, color = "light pink", 
+                 outlier.color = "light pink", 
+                 outlier.alpha = .005,
+                 outlier.size = 3) + 
+    geom_violin(fill = "blue", alpha = .2, color = NA) +
+  ylim(0, NA) + coord_flip() + ylab("Height (m)") + xlab("")
+```
+
 ## What's Next
 
  1. **Eye-training** 
