@@ -50,7 +50,7 @@ Relevant links:
     - 6.5, 6.6, 6.7, 6.8
     - 7.1, 7.4, 7.5, 7.7, 7.11, 7.12
 * In-class activity
-    - [Intro to graphics and wrangling](Projects/Intro-Graphics-Wrangling.html). 
+    - [Intro to graphics and wrangling](Projects/351-Intro-Graphics-Wrangling.html). 
     - Use file `Week-3-project.Rmd`
 * Notes from class: [glyphs, frames, and scale](Presentations/332-GlyphsFramesScales.html) : [basic verbs](Presentations/431-BasicVerbs.html) : [a map of the stars](Examples/StarMap/337-star-map.html) : [words in Moby Dick](Examples/MobyDick/438-MobyDick.html) :
 <!-- [data vs information](DCF-materials-book/_book/data-vs-information.html) : -->
