@@ -52,7 +52,8 @@ Relevant links:
 * In-class activity
     - [Intro to graphics and wrangling](Projects/Intro-Graphics-Wrangling.html). 
     - Use file `Week-3-project.Rmd`
-* Notes from class: [data vs information](DCF-materials-book/_book/data-vs-information.html) : [glyphs, frames, and scale](DCF-materials-book/_book/glyphs-frames-and-scales.html) : [basic verbs](DCF-materials-book/_book/basicdataverbs.html) : [a map of the stars](DCF-materials-book/_book/mapping-the-stars.html) : [words in Moby Dick](DCF-materials-book/_book/case-study-in-basic-data-verbs-moby-dick.html)
+* Notes from class: [glyphs, frames, and scale](Presentations/332-GlyphsFramesScales.html) : [basic verbs](Presentations/431-BasicVerbs.html) : [a map of the stars](Examples/StarMap/337-star-map.html) : [words in Moby Dick](Examples/MobyDick/438-MobyDick.html) :
+<!-- [data vs information](DCF-materials-book/_book/data-vs-information.html) : -->
 
 
 
