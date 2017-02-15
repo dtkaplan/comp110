@@ -1,0 +1,43 @@
+# Introducing `group_by()` and `summarise()`
+
+```{r include=FALSE}
+library(ggplot2)
+library(dplyr)
+data(Galton, package = "mosaicData")
+```
+
+It may appear that `group_by()` does nothing.
+```{r}
+Tmp <-
+  Galton %>%
+  group_by(sex)
+nrow(Galton)
+nrow(Tmp)
+names(Galton)
+names(Tmp)
+head(Galton)
+head(Tmp)
+```
+
+The point of `group_by()` is to set up other data verbs to work on a group-by-group basis.
+
+An example: `summarise()`, which reduces many cases to a single case.
+```{r}
+Galton %>% 
+ summarise(mheight = mean(height), ncases = n()) 
+
+```
+
+And now divided into groups by sex
+```{r}
+Galton %>%
+  group_by(sex) %>%
+  summarise(mheight = mean(height), ncases = n()) 
+```
+
+and further divided by the family size
+```{r}
+Galton %>%
+  group_by(sex, nkids) %>%
+  summarise(mheight = mean(height), ncases = n()) 
+```

@@ -101,6 +101,8 @@ navbar:
           - text: "-------"
           - text: "Basic data verbs"
             href: "Presentations/431-BasicVerbs.html"
+          - text: "Group and summarize"
+            href: "Presentations/422-groupby-summarise.Rmd"
           - text: "Transformations for ranks, dates, lags & text"
             href: "Presentations/433-More-Transformations.html"
           - text: "Combining tables with joins"

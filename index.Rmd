@@ -52,7 +52,10 @@ Relevant links:
 * In-class activity
     - [Intro to graphics and wrangling](Projects/351-Intro-Graphics-Wrangling.html). 
     - Use file `Week-3-project.Rmd`
-* Notes from class: [glyphs, frames, and scale](Presentations/332-GlyphsFramesScales.html) : [eye training for data graphics](Presentations/333-eye-training-for-graphics.html) : [basic verbs](Presentations/431-BasicVerbs.html) : [a map of the stars](Examples/StarMap/337-star-map.html) : [words in Moby Dick](Examples/MobyDick/438-MobyDick.html) :
+* Notes from class: 
+    - Data graphics: [glyphs, frames, and scale](Presentations/332-GlyphsFramesScales.html) : [eye training for data graphics](Presentations/333-eye-training-for-graphics.html)  
+    - Wrangling: [basic verbs](Presentations/431-BasicVerbs.html), [group and summarise](Presentations/422-groupby-summarise.Rmd) 
+    - Examples: [a map of the stars](Examples/StarMap/337-star-map.html) : [words in Moby Dick](Examples/MobyDick/438-MobyDick.html) :
 <!-- [data vs information](DCF-materials-book/_book/data-vs-information.html) : -->
 
 
@@ -71,7 +74,6 @@ Relevant links:
     - Use file `Week-4-project.Rmd`
 * Notes from class: [More transformation verbs](DCF-materials-book/_book/more-transformation-verbs.html) : [world cities](DCF-materials-book/_book/cities-of-the-world.html) 
 
-NB. We will be scoring papers toward the end of Sept. So feel free to update your earlier work if you wish. (But remember the time budget!)
 
 ------------<span id="week-5"></span>
 
