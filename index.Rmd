@@ -44,7 +44,7 @@ Relevant links:
 ## Week 3: Data summaries and graphics 
 
 * Readings: Data Computing chapters 5, 6, & 7
-* Week 3 online tutorials: [Chapter 3](https://dtkaplan.shinyapps.io/Chapter-03-collection/), [Chapter 4](https://dtkaplan.shinyapps.io/Chapter-04-collection/), [Chapter 5](https://dtkaplan.shinyapps.io/Chapter-05-collection/), [Chapter 6](https://dtkaplan.shinyapps.io/Chapter-06-collection/), [Chapter 7](https://dtkaplan.shinyapps.io/Chapter-04-collection/)
+* Week 3 online tutorials: [Chapter 3](https://dtkaplan.shinyapps.io/Chapter-03-collection/), [Chapter 4](https://dtkaplan.shinyapps.io/Chapter-04-collection/), [Chapter 5](https://dtkaplan.shinyapps.io/Chapter-05-collection/), [Chapter 6](https://dtkaplan.shinyapps.io/Chapter-06-collection/), [Chapter 7](https://dtkaplan.shinyapps.io/Chapter-07-collection/)
 * Short-answer questions from book: File `Week-3-short-answer.Rmd`
     - 5.1, 5.2
     - 6.5, 6.6, 6.7, 6.8
@@ -61,6 +61,7 @@ Relevant links:
 ## Week 4: Data Verbs
 
 * Readings: *Data Computing* chapters 8 & 9
+* Week 4 online tutorials: [Chapter 8](https://dtkaplan.shinyapps.io/Chapter-08-collection/), [Chapter 9](https://dtkaplan.shinyapps.io/Chapter-09-collection/)
 * Short-answer questions: from book. File `Week-4-short-answer.Rmd`
     - 8.1, 8.2, 8.3
     - 9.1, 9.3
