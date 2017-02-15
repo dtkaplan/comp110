@@ -1,0 +1,36 @@
+---
+title: "Eye-Training for Data Graphics"
+author: "Data Computing"
+---
+
+```{r include=FALSE}
+library(DataComputing)
+```
+
+# Basic questions to ask of a data graphic
+
+1. What variables constitute the frame?
+2. What glyphs are used?
+3. What are the aesthetics for those glyphs?
+4. Which variable is mapped to each aesthetic?
+5. Which variable, if any, is used for faceting?
+6. Which scales are displayed with a guide?
+
+# Graphics examples
+
+1. [Admissions gap](http://www.nytimes.com/interactive/2013/05/07/education/college-admissions-gap.html?_r=0)
+#. [Medicare hospital charges](https://www.nytimes.com/interactive/2014/06/02/business/how-much-hospitals-charged-medicare-for-the-same-procedures.html)
+#. [Football conferences](http://www.nytimes.com/newsgraphics/2013/11/30/football-conferences/)
+#. [Housing prices](https://www.nytimes.com/interactive/2014/01/23/business/case-shiller-slider.html)
+#. [Baseball pitching](http://www.nytimes.com/interactive/2013/03/29/sports/baseball/Strikeouts-Are-Still-Soaring.html)
+#. [Phillips curve](http://www.nytimes.com/interactive/2013/10/09/us/yellen-fed-chart.html)
+#. [School mathematics ratings](http://www.nytimes.com/interactive/2013/02/04/science/girls-lead-in-science-exam-but-not-in-the-united-states.html)
+#. [Corporate taxes](http://www.nytimes.com/interactive/2013/05/25/sunday-review/corporate-taxes.html)
+
+\includegraphics[angle=90, origin=c, width=\textwidth]{Images/sankey.png}
+
+\includegraphics[angle=90, origin=c, width=\textwidth]{Images/NYT-map.png}
+
+\includegraphics[angle=90, origin=c, width=\textwidth]{Images/NYT-pitching.png}
+
+![Cladistics](Images/AndyZCladistics.png)

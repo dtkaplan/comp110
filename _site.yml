@@ -44,7 +44,7 @@ navbar:
           - text: "The library collection (file upload version)"
             href: "Projects/251-Library-Books.html"
           - text: "Intro to graphics and wrangling"
-            href: "Projects/351-Intro-Graphics/Wrangling.html"
+            href: "Projects/351-Intro-Graphics-Wrangling.html"
           - text: "Births and holidays"
             href: "Projects/453-Births-and-holidays.html"
           - text: "Stocks and dividends"
@@ -74,6 +74,8 @@ navbar:
             href: "Examples/StarMap/337-star-map.html"
           - text: "Cleaning birds with join"
             href: "Examples/OrdwayBirds/537-joining-for-cleaning.html"
+          - text: "Words in Moby Dick"
+            href: "Examples/MobyDick/438-MobyDick.html"
     - text: Notes
       menu:
           - text: "Submitting your work"
@@ -92,6 +94,8 @@ navbar:
             href: "Presentations/332-GlyphsFramesScales.html"
           - text: "Displaying distributions"
             href: "Presentations/621-Distributions.html"
+          - text: "Eye training for data graphics"
+            href: "Presentations/333-eye-training-for-graphics.html"
           - text: "-------"
           - text: "Wrangling"
           - text: "-------"
