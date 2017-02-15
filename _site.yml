@@ -84,7 +84,7 @@ navbar:
           - text: "File names and paths"
             href: "Presentations/130-file-paths.html"
           - text: "R parts of speech"
-            href: "Presentations/233-R-parts-of-speech.Rmd"
+            href: "Presentations/233-R-parts-of-speech.html"
           - text: "-------"
           - text: "Graphics"
           - text: "-------"
