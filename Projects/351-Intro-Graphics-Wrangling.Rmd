@@ -19,7 +19,7 @@ In today's activity, you are going to deconstruct some graphics and carry out so
 
 ## Deconstructing graphics
 
-```{r echo=FALSE, warning=FALSE, fig.cap="A representation of some of the variables from the CPS85 data table in the mosaicData package.", fig.width=8, fig.height=4, out.width=".8\\linewidth"}
+```{r echo=FALSE, warning=FALSE, fig.cap="A representation of some of the variables from the CPS85 data table in the mosaicData package.", fig.width=8, fig.height=4, out.width="100%"}
 ggplot(data=CPS85,aes(x=exper,y=wage))+geom_point()+aes(colour=married)+scale_x_log10()+scale_y_log10()+facet_wrap(~sector,ncol=4)
 ```
 
