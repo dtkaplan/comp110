@@ -72,7 +72,10 @@ Relevant links:
 * In-class activity
     - [Handout: Births and holidays](Projects/453-Births-and-holidays.html)
     - Use file `Week-4-project.Rmd`
-* Notes from class: [More transformation verbs](Presentations/433-More-Transformations.html) : [world cities](DCF-materials-book/_book/cities-of-the-world.html) 
+* Notes from class: 
+    - [Data verbs](Presentations/432-Commonly_Used_Data_Verbs.html)
+    - [More transformation verbs](Presentations/433-More-Transformations.html)
+    - Warm up - [world cities](Examples/WorldCities/439-Cities.html.html) 
 
 
 ------------<span id="week-5"></span>
