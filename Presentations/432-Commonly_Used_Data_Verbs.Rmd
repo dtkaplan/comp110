@@ -1,0 +1,61 @@
+# Important Data Verbs
+
+a. Create new variables or change/drop existing ones
+    1. Can change the cases: `summarise()`, `left_join()`, `inner_join()`, `full_join()`
+    2. Doesn't change the cases `select()`, `mutate()`
+b. No new variables created.
+    1. Can change the cases: `filter()`, `semi_join()`, `anti_join()`
+    2. Doesn't change the cases: `arrange()`, `group_by()`
+c. `gather()` and `spread()`
+
+--------------
+
+
+a. Create new variables or change existing ones
+    1. `summarise()` 
+        - arguments should be named. These come the names of the new variables.
+        - `new_var_name = ` reduction_verb`(...)`
+        - can use transformation & reduction verbs inside the reduction verb, e.g. `stderr = sd(sqrt(var) / n())`
+        - Names in output will be *only* the grouping vars of the input and the new variables created.
+        - `tally()` is a shortcut for `summarise(n = n())`
+        - output: one row for each group
+    4. joins
+        - Output contains *all* the variables in the two tables.
+            - `left_join()` - there will be at least one case in the output for every case in the left table. Output includes all vars.
+            - `inner_join()` - output has only cases in left table that have a match in right table. Output includes all vars.
+            - `full_join()` - contains all cases from both left and right table. For any cases that don't have a match in the other table, `NA` is inserted as the value for the variable for the vars from the other table.
+    2. `mutate()`
+        - arguments should be named: these names become the names of the new variables.
+        - `new_var_name = ` transformation_verb`(...)`
+        - can use reduction and transformation verbs *inside* the transformation verbs, e.g. `frac = `/`(count,  sum(count))`^[More naturally written as `frac = count / sum(count)`]
+        - output: same cases as input but with new variables added.
+        - `transmute()` is similar, but drops all variables other than those created.
+    3. `select()`
+        - to rename the selected columns, use named arguments: `new_var = old_var`
+        - `rename()` works the same but *does not* throw away any columns
+        - output: same cases, but a subset of variables
+
+
+b. No new variables created
+    1. `group_by()`
+        - no named arguments
+        - output: same cases and vars as input but "marked" with groups per the arguments.
+    2. `arrange()` --- sometimes with `desc().
+        - no named arguments
+        - multiple arguments: second and later arguments used to break ties in the arrangement by the previous arguments.
+        - respects groups
+        - output: same cases and vars as input but in an order specified with arguments
+    3. `filter()`
+        - no named arguments: a boolean transformation verb
+        - if reduction verbs used, will respect groups.
+        - output: same cases and vars as input but some cases may be dropped.
+    5. joins, output contains only the left-table variables in the output
+        - `semi_join()` - filters the left-table input to include only those with a match in the right table. Output includes only left-table vars.
+        - `anti_join()` is same as `semi_join()` but the filter is for those cases *without* a match in the right table. Output includes only left-table vars.
+        
+
+c. `gather()` and `spread()`
+
+
+
+

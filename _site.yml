@@ -76,6 +76,8 @@ navbar:
             href: "Examples/OrdwayBirds/537-joining-for-cleaning.html"
           - text: "Words in Moby Dick"
             href: "Examples/MobyDick/438-MobyDick.html"
+          - text: "Cities of the World"
+            href: "Examples/WorldCities/439-Cities.html"
     - text: Notes
       menu:
           - text: "Submitting your work"
@@ -102,7 +104,9 @@ navbar:
           - text: "Basic data verbs"
             href: "Presentations/431-BasicVerbs.html"
           - text: "Group and summarize"
-            href: "Presentations/422-groupby-summarise.Rmd"
+            href: "Presentations/422-groupby-summarise.html"
+          - text: "Commonly used data verbs"
+            href: "Presentations/432-Commonly_Used_Data_Verbs.html"
           - text: "Transformations for ranks, dates, lags & text"
             href: "Presentations/433-More-Transformations.html"
           - text: "Combining tables with joins"
