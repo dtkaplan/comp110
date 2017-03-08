@@ -1,0 +1,234 @@
+---
+title: "Visualizing Movie Ratings"
+author: "Data Computing"
+output:
+  tufte::tufte_html: default
+  tufte::tufte_handout:
+    citation_package: natbib
+    latex_engine: xelatex
+---
+```{r include=FALSE}
+library(DataComputing)
+library(tidyr)
+library(ggplot2)
+library(mosaic)
+knitr::opts_chunk$set(tidy = FALSE)
+```
+
+<!-- # Read the data --- just for the draft -->
+
+```{r eval = FALSE, echo = FALSE}
+data_dir <- "~/Downloads/ml-100k/"
+read_ml_file <- function(fname, data_dir, vnames, sep = "|") {
+  Res <- read.csv(paste0(data_dir, fname), stringsAsFactors = FALSE, header = FALSE, sep = sep, colClasses = "character")
+  names(Res) <- vnames
+  Res
+}
+Users <-
+  read_ml_file("u.user", data_dir,
+                      vnames = c("user_id", "age", "sex", "occupation", "zip_code")) %>%
+  mutate(age = tidyr::extract_numeric(age))
+
+Movies <-
+  read_ml_file("u.item", data_dir, 
+                vnames = c("movie_id", "movie_title", "release_date", "video_release_date", "IMDb_URL", "unknown", 
+                           "Action", "Adventure", "Animation", "Children's", "Comedy",  "Crime",  "Documentary",  "Drama",  "Fantasy", 
+                           "Film-Noir",  "Horror",  "Musical",  "Mystery",  "Romance",  "Sci-Fi", "Thriller",  "War",  "Western"))
+Movies <-
+  Movies %>%
+  select( - video_release_date) %>%
+  mutate(release_date = lubridate::dmy(release_date)) #, video_release_date = lubridate::dmy(video_release_date))
+for (k in 5:23) {
+  Movies[[k]] <- as.logical(as.numeric(Movies[[k]]))
+}
+
+Ratings <-
+  read_ml_file("u.data", data_dir, sep = "\t",
+                vnames = c("user_id", "movie_id", "rating", "time_stamp"))
+Ratings <-
+  Ratings %>%
+  mutate(rating = tidyr::extract_numeric(rating),
+         time_stamp = as.POSIXct(as.numeric(as.character(time_stamp)), origin="1970-01-01", tz = ""))
+
+save(Users, Movies, Ratings, file = "MovieLens.rda")
+```
+
+A set of 100,000 ratings of movies by individuals was collected in the late 1990s by the *grouplens* research team at the University of Minnesota. The grouplens team provides the data directly at <http://grouplens.org/datasets/movielens/100k/>.  These data were reformatted by for the *Data Computing* book. Downloaded them to your own computer with this statement:
+```{r eval = FALSE, message = FALSE}
+download.file("http://tiny.cc/dcf/MovieLens.rda", 
+              destfile = "MovieLens.rda")
+```
+
+You only need to download the data once. But each time you start a new R session^[Every time you *knit* a document, you are starting a new session just for the purpose of compiling that document.] you will need to `load()` the data to your R session. 
+    
+```{r echo = FALSE}
+load("MovieLens.rda")
+```
+
+`MovieLens.rda` contains three data tables:
+
+* `Ratings` has the individual movie ratings and the time at which they were entered. It also includes an ID variable for both the user and the movie.
+* `Movies` provides the name of the movie and information about genres.
+* `Users` gives basic information about the person who made the rating.
+
+Your task: Construct each of these graphics.
+
+## Show the appeal of different genres to the different sexes
+```{r echo = FALSE, warning = FALSE, message = FALSE}
+With_genres <-
+  Movies %>% 
+  tidyr::gather(key = "genre", value = "tmp", 5:23) %>%
+  filter(tmp) %>%
+  select(-tmp) 
+All <- 
+  Ratings %>% 
+  left_join(With_genres) %>%
+  left_join(Users)
+Tmp <- 
+  All %>%
+  group_by(genre) %>%
+  filter(n() > 1000) %>%
+  group_by(genre, sex) %>%
+  summarise(mean = mean(rating), sd = sd(rating) / sqrt(n())) %>% 
+  ungroup()
+Tmp %>% select(-sd) %>%
+  tidyr::spread(key = sex, mean) %>%
+  mutate(diff = F - M)  -> Tmp2
+Tmp %>%
+  left_join(Tmp2) %>%
+  mutate(genre = reorder(genre, desc(F))) %>%
+  ggplot(aes(x = genre, y = mean, color = sex)) + 
+    geom_errorbar(aes(ymin = mean - 2*sd, ymax = mean + 2 * sd), position = position_dodge(width = 0.2)) + 
+    geom_point(position = position_dodge(width = 0.2)) +
+  coord_flip()
+```
+
+## Which genres are related?
+
+Look at correlation between genres `cor()`.
+
+Another possibility, look at the co-occurence, fraction of movie genre A that is also movie genre B.
+```{r}
+co_occurance <- function(genres){
+  f <- function(x,y) {sum(x * y) / sum(x)}
+  M <- matrix(0, nrow = ncol(genres), ncol = ncol(genres))
+  for (first in 1:ncol(genres)) {
+    for (second in 1:ncol(genres)) {
+      M[first, second] <- f(genres[[first]], genres[[second]])
+    }
+  }
+  M <- as.data.frame(M)
+  names(M) <- names(genres)
+  M$genre <- names(genres)
+  M %>%
+    tidyr::gather(key = genre2, value = co_occur, -genre)
+}
+```
+
+```{r}
+Genres <- Movies[,6:23]
+tmp <- cor(Genres) %>% as.data.frame(stringsAsFactors = FALSE)
+tmp$genre <- row.names(tmp)
+Genre_pairs <-
+  tmp %>% 
+  gather(key = genre2, value = correlation, -genre) %>%
+  filter(genre != genre2) %>%
+  group_by(genre) %>%
+  mutate(cor_sign = as.character(sign(correlation))) %>%
+  mutate(cor_size = abs(correlation))
+Genre_co_occur <- co_occurance(Genres) %>%
+  filter(genre != genre2)
+Genre_pairs %>%
+  ggplot(aes(x = genre2, y = genre)) + 
+  geom_point(aes(size = cor_size, color = cor_sign)) +
+  theme(axis.text.x  = element_text(angle=90, vjust=0.5))
+Genre_co_occur %>%
+  ggplot(aes(x = genre2, y = genre)) +
+  geom_point(aes(size = co_occur)) +
+  theme(axis.text.x  = element_text(angle=90, vjust=0.5))
+```
+
+As a network
+```{r warning = FALSE, message = FALSE}
+library(igraph)
+Keep_pairs <- 
+  Genre_pairs %>%
+  filter(cor_size > 0.05, cor_sign == "1") %>%
+  filter(genre > genre2) 
+Vertices <- Keep_pairs %>% 
+  edgesToVertices(from = genre, to = genre2) 
+ 
+Edges <- 
+  Vertices %>%
+  edgesForPlotting(ID = ID, x, y, Edges = Keep_pairs, from = genre, to = genre2)
+Vertices %>%
+  ggplot(aes(x = x, y = y)) + geom_point()+
+  geom_segment(data = Edges, 
+               aes(x = x, y = y, xend = xend, yend = yend, 
+                   color = correlation, size = correlation)) + 
+  theme_map() + 
+    geom_label(aes(label = ID), fill = "white") 
+```
+
+And for co-occurances ...
+
+```{r echo = FALSE, warning = FALSE, message = FALSE}
+library(igraph)
+Keep_pairs <- 
+  Genre_co_occur %>%
+  filter(co_occur > 0.2) %>%
+  filter(genre > genre2) 
+Vertices <- Keep_pairs %>% 
+  edgesToVertices(from = genre, to = genre2) 
+ 
+Edges <- 
+  Vertices %>%
+  edgesForPlotting(ID = ID, x, y, Edges = Keep_pairs, from = genre, to = genre2)
+Vertices %>%
+  ggplot(aes(x = x, y = y)) + geom_point()+
+  geom_segment(data = Edges, 
+               aes(x = x, y = y, xend = xend, yend = yend, 
+                   size = co_occur, color = co_occur)) + 
+  theme_map() + 
+    geom_label(aes(label = ID), fill = "white") 
+```
+
+## Who are the reviewers?
+
+```{r}
+Users %>%
+  ggplot(aes(x = age)) + 
+  geom_density(aes(fill = occupation), 
+               color = NA, alpha = .7, position = "fill") + 
+  facet_wrap( ~ sex)
+```
+
+```{r}
+Users %>%
+  ggplot(aes(x = age)) + 
+  geom_density(aes(fill = sex), 
+               color = NA, alpha = .4, position = "fill")
+```
+
+```{r}
+Users %>%
+  group_by(occupation) %>%
+  tally() %>%
+  arrange(desc(n))
+```
+
+## Ratings as people age
+
+```{r fig.width=10, fig.height = 15}
+All %>%
+  filter( genre != "unknown") %>%
+  ggplot(aes(x = age, color = sex, y = rating)) + 
+  geom_smooth() + 
+  facet_wrap( ~ genre, scales = "free")
+```
+
+```{r}
+All %>% 
+  ggplot(aes(x = age, color = sex, y = rating)) +
+  geom_smooth()
+```

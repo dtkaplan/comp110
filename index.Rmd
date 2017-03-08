@@ -107,13 +107,16 @@ load("Colleges-excerpt.rda")
 ## Week 6: Collective properties of data: Stats
 
 * Readings: from Data Computing Chapters 12, 13 and 14
+* Networks: [comcast complaints example](https://mail.google.com/mail/u/0/#inbox/15aa997de25c63ca),
+[immigration](Examples/Migration/Migration.html), [movie genres](Examples/MovieLens/MovieLens.html)
 * Short-answer questions from the book: File `Week-6-short-answer.Rmd`
     - 12.1, 12.2, 12.3
     - 13.1, 13.2, 13.3, 13.4
     - 14.1, 14.3, 14.7, 14.10
 * In-class activity: 
     - [Bicycle rentals](Projects/452-Bicycle-Rentals.html)
-    - Use file `Week-6-Project.Rmd`    
+    - Use file `Week-6-Project.Rmd` 
+    
 ---------
     
 > Spring break
@@ -127,7 +130,7 @@ load("Colleges-excerpt.rda")
     - 15.1, 15.2
     - 16.1, 16.2, 16.3
 * In-class activity: 
-    - Scraping Nuclear ReactorsTTTTTTTTT
+    - Scraping Nuclear Reactors
     - Use file `Week-7-Project.Rmd`
 * Additional Resources:
     - A regex ["cheat sheet"](http://krijnhoetmer.nl/stuff/regex/cheat-sheet/)

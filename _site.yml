@@ -67,7 +67,7 @@ navbar:
     - text: Examples
       menu:
           - text: "Movie ratings"
-            href: "Examples/MovieLens/Movie-Genres.html"
+            href: "Examples/MovieLens/MovieLens.html"
           - text: "Migration between countries"
             href: "Examples/Migration/Migration.html"
           - text: "Mapping the stars"
