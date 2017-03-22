@@ -84,7 +84,7 @@ table <- table[-1, ] # drop the first row
 ```
 
 ```{r echo = show_answers}
-Japan <- table_list[[23]]
+Japan <- table_list[[24]]
 new_names <- c("name", "reactor", "type", "model", "status", "net", "gross", 
                "const_start", "operation_start", "closure")
 names(Japan) <- new_names

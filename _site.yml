@@ -53,7 +53,7 @@ navbar:
             href: "Projects/452-Bicycle-Rentals.html"
           - text: "A graph for the 'Economist'"
             href: "Projects/552-Economist-graph.html"
-          - text: "Street words"
+          - text: "The word on the street"
             href: "Projects/751-StreetEndings.html"
           - text: "Scraping nuclear reactors"
             href: "Projects/832-NuclearReactors.html"
@@ -78,7 +78,9 @@ navbar:
             href: "Examples/MobyDick/438-MobyDick.html"
           - text: "Cities of the World"
             href: "Examples/WorldCities/439-Cities.html"
-    - text: Notes
+          - text: "Walmart closings"
+            href: "Examples/WalmartClosings/WalmartScraping.html"
+    - text: Basics
       menu:
           - text: "Submitting your work"
             href: "Presentations/135-Submitting-files.html"
@@ -98,9 +100,8 @@ navbar:
             href: "Presentations/621-Distributions.html"
           - text: "Eye training for data graphics"
             href: "Presentations/333-eye-training-for-graphics.html"
-          - text: "-------"
-          - text: "Wrangling"
-          - text: "-------"
+    - text: Wrangling
+      menu:
           - text: "Basic data verbs"
             href: "Presentations/431-BasicVerbs.html"
           - text: "Group and summarize"

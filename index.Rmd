@@ -130,7 +130,7 @@ load("Colleges-excerpt.rda")
     - 15.1, 15.2
     - 16.1, 16.2, 16.3
 * In-class activity: 
-    - Scraping Nuclear Reactors
+    - [Scraping Nuclear Reactors](Projects/832-NuclearReactors.html) or [The Word on the Street](Projects/751-StreetEndings.html)
     - Use file `Week-7-Project.Rmd`
 * Additional Resources:
     - A regex ["cheat sheet"](http://krijnhoetmer.nl/stuff/regex/cheat-sheet/)
@@ -138,7 +138,7 @@ load("Colleges-excerpt.rda")
     - The New York Times on [data janitors](http://www.nytimes.com/2014/08/18/technology/for-big-data-scientists-hurdle-to-insights-is-janitor-work.html?_r=0)
 * In-class links:
     - [Walmart store-closure data](http://news.walmart.com/news-archive/2016/01/15/walmart-continues-sharpened-focus-on-portfolio-management)
-    - [Google doc](https://docs.google.com/spreadsheets/d/1Ow6Cm4z-Z1Yybk3i352msulYCEDOUaOghmo9ALajyHo/edit#gid=1811988794) for posting your link to an online source.
+    - [Google doc](https://docs.google.com/document/d/1AFWPdPjivqp3R4Gy0n5fM52EDnxsg4xxaibzPHbNn6U/edit?usp=sharing) for posting your link to an online source.
     
 -------------<span id="week-8"></span>
 
