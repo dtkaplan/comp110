@@ -133,6 +133,7 @@ load("Colleges-excerpt.rda")
     - [Scraping Nuclear Reactors](Projects/832-NuclearReactors.html) or [The Word on the Street](Projects/751-StreetEndings.html)
     - Use file `Week-7-Project.Rmd`
 * Additional Resources:
+    - A [regex overview](https://cran.r-project.org/web/packages/stringr/vignettes/regular-expressions.html) from the `stringr` package.
     - A regex ["cheat sheet"](http://krijnhoetmer.nl/stuff/regex/cheat-sheet/)
     - [Johns Hopkins data-cleaning course](https://www.coursera.org/course/getdata)
     - The New York Times on [data janitors](http://www.nytimes.com/2014/08/18/technology/for-big-data-scientists-hurdle-to-insights-is-janitor-work.html?_r=0)

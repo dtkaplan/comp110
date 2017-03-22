@@ -3,12 +3,18 @@
 ```{r include = FALSE}
 library(DataComputing)
 library(tidyr)
+library(stringr)
 ```
 
 ## Visualizing matches
 
 See the `str_view()` and `str_view_all()` widgets in [version 1.1 of stringr](https://blog.rstudio.org/2016/08/24/stringr-1-1-0/).
 
+```{r}
+library(DataComputing)
+foo <- sample_n(BabyNames, size = 20) %>% select(name)
+str_view_all(foo$name, "^.{6}$")
+```
 
 ## Example
 
