@@ -102,7 +102,8 @@ Japan <-
          operation_start = ifelse(operation_start == "", NA, operation_start)) %>%
 #  select(-closure) %>% na.omit() %>%
   mutate(const_start = dmy(const_start),
-         operation_start = dmy(operation_start))
+         operation_start = dmy(operation_start),
+         net = as.numeric(net))
 ```
 
 
