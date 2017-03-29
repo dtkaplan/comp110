@@ -1,0 +1,78 @@
+---
+output:
+  html_document: default
+---
+
+# Outline of Class Session: Week 7
+
+
+# A typical data-science project sequence (in brief)
+
+... and which parts of the process we have addressed in this course.
+
+> 0. You have a topic or problem of interest.
+    
+This generally arises from some expertise in a domain other than data science. We haven't addressed this in *Data Computing*
+
+> 1. Identify dataset(s) that are relevant.
+    
+Like Step 0. You have to know something about the problem domain to know where and how you might find relevant data.
+    
+> 2. Acquire those datasets.
+
+We talked a little about data scraping, but only enough to get you started. We didn't talk at all about the use of databases.
+    
+> 3. Understand what the variables mean and what the units of observation stand for.
+
+We have talked about the idea of a *codebook*. As a rule, you'll need some domain expertise to be able to figure things out. We discussed *tidy data* and the importance of avoiding untidying our data by including results of analysis within the data (as is the common practice with spreadsheet software). 
+    
+> 4. Clean the data.
+
+This often consumes the bulk of the data scientists time. We talked about it only in very general terms and covered a few techniques, e.g. date conversion, correcting mis-spelled levels of a categorical variable. We demonstrated some programming techniques for preserving the original data and documenting what the cleaning process is.
+    
+> 5. Conceive and design a data display that will illuminate the topic in Step 0.
+
+We talked about a grammar for graphics and identified some of the major types of layers that are used in various circumstances, including point-layers, bars for counts, other statistics (e.g. densities and smoothers), networks, ...
+
+> 6. Develop the wrangling process to put the data in glyph-ready form.
+
+We covered wrangling pretty completely using the semantics of *relational operators* and the syntax of  `dplyr`. 
+    
+> 7. Refine the display which might include:
+    - changing the unit of observation: go back to Step 6
+    - changing the mapping of variables to aesthetics.
+    - changing layer types, adding new layers, ...
+    - identify deficiencies in the data for addressing the problem at hand and, as warranted, go back to Step 1
+    
+You've learned to deconstruct data graphics into their layers and identify the mapping between variables and aesthetics. You should feel confident that you can deduce from a graphic the basic structure of the data table(s) that went into the graphic. You have a pretty good grasp of how to make and assemble a large variety of layers using `ggplot2`. 
+    
+> 8. Report your results and prepare to go back to Step 7 or any earlier step, including Step 0.
+
+We didn't spend much time on this.
+    
+> During this process, adopt professional work processes of documenting and validating your calculations.
+
+We used Rmd and GitHub for this. An Rmd document that can be compiled to HTML is a kind of certificate that all the results therein have been completely specified and can be run again whenever necessary to justify or amend your analysis.
+
+In practice, the eight steps are far from a linear process. There can be, and often are, many iterations of the various steps: 
+   - loop back from 7 to 6
+   - loop back from 7 to 1
+   - loop back from 8 to any of 7, 6, 5, 4, 3, 2, 1, 0
+   
+## In this class ...
+
+1. Introduce some new types of graphics.
+    - cladistics trees
+    - decision trees
+    - model values^[Not entirely new, since we have previously talked about smoothers.]
+2. Show some ways to quantify patterns that involve multiple variables.
+3. Introduce a few techniques for dealing with data 
+    - when there may be many variables of relevance
+    - where you want to screen quickly for variables that might be relevant to the problem
+    - where you are looking for a needle in a haystack, that is, when many variables are irrelevant (but it's not evident which ones) and you need to cast these out of your presentation/analysis of data.
+    
+Our in-class activity will involve (1) and (3)
+
+-------------------
+
+Danny Kaplan. Compiled at `r date()`.

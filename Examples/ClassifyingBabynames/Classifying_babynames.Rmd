@@ -1,0 +1,62 @@
+## Classifying BabyNames
+
+```{r include = FALSE}
+library(DataComputing)
+library(tidyverse)
+library(rpart)
+library(party)
+library(randomForest)
+library(statPREP)
+library(e1071)
+```
+
+Can we distinguish names that have a clear gender preference?
+
+```{r}
+GenderNames <-
+  group_by(BabyNames, name, sex) %>% 
+  summarise(cnt=sum(count)) %>% 
+  spread(key=sex, value=cnt, fill=0) %>%
+  filter((F+M)>10000, F > 10*M | M > 10*F) %>%
+  mutate(sex = ifelse(F>M, "female", "male"))
+```
+ 
+ 
+Some features
+
+* does it start with a vowel
+* does it end with a vowel
+* two consecutive vowels
+* how long is it
+* does it have a b
+
+```{r cache = TRUE}
+GenderFeatures <-
+  GenderNames %>%
+  ungroup %>%
+  mutate(name = as.character(name),
+         startV = grepl("^[aeiou]", name),
+         endV = grepl("[aeiou]&", name),
+         twoV = grepl("[aeiou]{2,}", name),
+         threeV = grepl("[aeiou].?[aeiou].?[aeiou]", name),
+         nchar = nchar(name),
+         hasb = grepl("[Bb]", name)
+         )
+```
+
+How well can we classify the sex based on these features?
+
+
+```{r}
+mod <- rpart(sex ~ startV + endV + twoV + threeV + nchar + hasb, 
+             data=GenderFeatures, cp = 0.001)
+rpart.plot::prp(mod, extra = 2)
+preds <- as.data.frame(predict(mod)) %>%
+  mutate(pred_sex = ifelse(female > male, "female", "male"))
+counts(sex  ~ preds$pred_sex, data = GenderFeatures)
+logistic_mod <- glm(sex == "female" ~ startV*endV*twoV*threeV*nchar*hasb, data = GenderFeatures, family = "binomial")
+pred_sex <- ifelse(predict(logistic_mod) > 0.5, "female", "male")
+counts(sex ~ pred_sex, data = GenderFeatures)
+
+# svm_mod <- svm(sex ~ ., data = GenderFeatures)
+```

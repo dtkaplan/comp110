@@ -1,0 +1,159 @@
+
+```{r include=FALSE}
+library(DataComputing)
+library(rpart)
+library(rpart.plot)
+library(statisticalModeling)
+library(randomForest)
+library(statPREP)
+data(Carseats, package = "ISLR")
+```
+
+## Business and marketing decisions
+
+A very large sector of the economy has to do with merchandise retailing. The people who manage retailing have to make a variety of decisions, for instance,
+
+- What prices to set
+- How to allocate resources toward marketing, e.g. advertisement, product placement, etc.
+- How to determine what aspects of a product are attractive to consumers and which not.
+
+In this example, we work with some data about the sales and prices of child car seats. The data come from the `ISLR` package: a data table `Carseats`.
+
+> Install the `ISLR` package on your R system.
+
+## The data
+
+Companies generally hold sales and marketing data confidential. This leads to an unfortunate situation for students and educators; realistic data is not readily available for the purposes of teaching and practice. The `Carseats` data has been generated from a simulation.
+
+> Look at the `Carseats` codebook.
+
+1. Familiarize yourself with the variables
+2. Figure out what is the unit of observation
+3. Using your everyday experience, common sense, judgment, and whatever you know about retail, marketing and economics, frame a sensible hypothesis about what might be the determinants of the number of carseats sold at each location.
+4. Generate a graphic that has a chance of effectively supporting or refuting your hypothesis.
+
+For instance (drawn from the students):
+
+### Hypothesis:
+
+### Graphic:
+
+```{r}
+Carseats %>% 
+  mutate(competition = mosaic::ntiles(CompPrice, 4)) %>%
+  ggplot(aes(y = Sales, x = Price)) +
+  geom_point(aes(color = Population)) + 
+  facet_wrap(~ competition)
+```
+
+Can you see:
+
+- a relationship between sales and price?
+- a relationship between population and sales?
+- a relationship between competitor's price and sales of your product?
+
+Could you convince your (imagined) product manager of the importance or unimportance of these relationships?
+
+Some refinement:
+
+- change the role of variables
+- maybe divide population into groups to get better graphical interpretation.
+
+
+### Quantitative presentations:
+
+#### Linear Modeling
+
+Linear modeling to produce coefficients and confidence intervals. This is perhaps the earliest machine learning technique. (But it's usually not classified as "machine learning." If it had been invented in 2010 instead of 1910, it would earn the label "machine learning.")
+
+```{r}
+model_1 <- Sales ~ Price + Population + CompPrice
+htest(model_1, data = Carseats, test = "coefficients")
+htest(model_1, data = Carseats, test = "anova" )
+```
+
+
+
+```{r}
+model_2 <- Sales ~ .
+htest(model_2, data = Carseats, test = "coefficients")
+htest(model_2, data = Carseats, test = "anova")
+```
+Displaying the model:
+
+```{r}
+fitted_mod <- lm(model_2, data = Carseats)
+gmodel(fitted_mod, ~ Price + ShelveLoc + Age + Advertising,
+       Age = c(30, 50, 70))
+```
+
+How would you re-arrange the variables to make the effect (or lack of effect) of each variable clear?
+
+
+#### Regression tree
+
+An middle-aged machine-learning technique
+
+```{r}
+model_3 <- rpart(Sales ~ ., data = Carseats)
+prp(model_3)
+gmodel(model_3, ~ Price + ShelveLoc + Age + Advertising,
+       Age = c(30, 50, 70))
+```
+
+
+
+Things to note from the graphical model:
+
+- Advertising doesn't matter, except for high levels of advertising with the product in a "good" shelf location.
+- In general, people will look at bad shelf locations if the price is low.
+- Old people won't reach down to the lower shelf even if the price is low.
+
+#### Random Forest
+
+An newish machine-learning technique
+
+```{r}
+model_4 <- randomForest(Sales ~ ., data = Carseats)
+importance(model_4)
+gmodel(model_4, ~ Price + ShelveLoc + Age + Advertising,
+       Age = c(30, 50, 70))
+```
+
+A more nuanced relationship between price and sales and between shelf location and sales. 
+
+Compared to linear models and ANOVA, variables such as `CompPrice` and income seem to be playing more of a role.
+
+## Deciding on variables
+
+Compare models:
+
+```{r cache = TRUE}
+small_mod <- randomForest(Sales ~ Price + Age + ShelveLoc, data = Carseats)
+med_mod <- randomForest(Sales ~ Price + Age + ShelveLoc + CompPrice + Advertising, data = Carseats)
+big_mod <- randomForest(Sales ~ ., data = Carseats)
+CV_results <- cv_pred_error(small_mod, med_mod, big_mod)
+gf_point(mse ~ model, data = CV_results)
+```
+Alas, `gmodel()` is not yet working on bootstrap ensembles of random forest models.
+
+## Quantifying the effect of variables
+
+```{r cache = TRUE}
+E <- ensemble(med_mod, nreps = 100)
+One <- effect_size(E, ~ CompPrice, ShelveLoc = c("Good", "Medium", "Bad"))
+gf_point(slope ~ ShelveLoc, data = One)
+Two <- effect_size(E, ~ ShelveLoc, ShelveLoc = "Good")
+Three <- effect_size(E, ~ CompPrice, ShelveLoc = c("Good", "Medium", "Bad"))
+gf_point(slope ~ ShelveLoc, data = Three)
+```
+
+Let's take a look using linear models:
+
+```{r cache = TRUE}
+small_mod <- lm(Sales ~ Price + Age + ShelveLoc, data = Carseats)
+med_mod <- lm(Sales ~ Price + Age + ShelveLoc + CompPrice + Advertising, data = Carseats)
+big_mod <- lm(Sales ~ ., data = Carseats)
+CV_results2 <- cv_pred_error(small_mod, med_mod, big_mod)
+gf_point(mse ~ model, data = CV_results2)
+```
