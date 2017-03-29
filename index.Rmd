@@ -149,6 +149,9 @@ load("Colleges-excerpt.rda")
 * Readings: Data Computing chapter 17
 * Short-answer questions from the book: File `Week-7-short-answer.Rmd`
     - 17.2
+* [In-class course evaluation](https://docs.google.com/forms/d/e/1FAIpQLSdB8kJod7GN4hx7Y6bFUSWMOHrqpsEdFQ_mZtsdY7ptiPhO6w/viewform?usp=sf_link). Note that the Google Form is *not* managed by Macalester, so no information about your name will be collected.
+* [A data science process](Notes/Week-7-outline.html) and how it aligns with the topics covered in this course.
+* Examples: [Selling car seats](Examples/CarSeats/Car_seat_sales.html), [Girl or boy](Examples/ClassifyingBabynames/Classifying_babynames.html), [Flowers, Countries, Cars](Examples/Clustering/Cars_and_flowers.html)
 * [Introduction to modeling online course](https://www.datacamp.com/courses/introduction-to-statistical-modeling-part-1). This is the first chapter of an online course being developed as I update the Math 155 (Intro to Statistical Modeling) materials. The course differs from the current Math 155 in that it is based on machine-learning concepts rather than the traditional regression concepts. 
 * In-class activity: 
     - [Unsupervised genetics](Projects/863-UnsupervisedGenetics.html)
