@@ -78,6 +78,8 @@ navbar:
             href: "Examples/MobyDick/438-MobyDick.html"
           - text: "Cities of the World"
             href: "Examples/WorldCities/439-Cities.html"
+          - text: "Selling infant car seats"
+            href: "Examples/CarSeats/Car_seat_sales.html"
           - text: "Walmart closings"
             href: "Examples/WalmartClosings/WalmartScraping.html"
     - text: Basics

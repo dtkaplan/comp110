@@ -1,0 +1,64 @@
+# Clustering
+
+```{r include = FALSE}
+library(DataComputing)
+library(dplyr)
+library(ggplot2)
+library(ggdendro)
+library(MASS)
+```
+
+
+## Dendrograms
+
+What cars are related to one another?
+
+
+1. Calculate the "distance" between each pair of cars
+```{r }
+Dists <- dist(mtcars)
+```
+
+2. Agglomerate them recursively
+```{r fig.height = 6, fig.width=6}
+Dendrogram <- hclust(Dists)
+ddata <- dendro_data(Dendrogram)
+ggdendrogram(Dendrogram, rotate = TRUE) +
+  geom_text(data = ddata$labels, aes(x=x, y=y, label = label), hjust = 0, vjust = 1) +
+  theme_void()
+```
+
+### Irises
+
+```{r}
+Flowers <- iris %>% mutate(ID = paste(Species, 1:n())) 
+rownames(Flowers) <- Flowers$ID
+Dists <- dist(dplyr::select(Flowers, -ID, -Species))
+Dendrogram <- hclust(Dists)
+ddata <- dendro_data(Dendrogram)
+ddata$labels$label <- Flowers$Species
+ggdendrogram(Dendrogram, rotate = TRUE, labels = TRUE) +
+  geom_text(data = ddata$labels, aes(x = x, y = y, label = nchar(as.character(label)), color = as.factor(nchar(as.character(label))))) +
+  theme_void()
+```
+
+### K-means
+
+```{r}
+clusts <- kmeans(dplyr::select(iris, -Species), centers = 5)
+iris$cluster <- as.factor(clusts$cluster)
+iris %>% 
+  ggplot(aes(x = Petal.Length, y = Petal.Width, color = cluster, shape = Species)) + geom_point()
+```
+
+## Countries
+
+```{r}
+Locations <- dplyr::select(WorldCities, latitude, longitude)
+city_clusts <- kmeans(Locations, centers = 6)
+Locations$clust <- as.factor(city_clusts$cluster)
+Locations %>% 
+  ggplot(aes(x = longitude, y = latitude, color = clust)) +
+  geom_point()
+```
+```
