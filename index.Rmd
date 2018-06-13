@@ -107,7 +107,7 @@ load("Colleges-excerpt.rda")
 ## Week 6: Collective properties of data: Stats
 
 * Readings: from Data Computing Chapters 12, 13 and 14
-* Networks: [comcast complaints example](https://mail.google.com/mail/u/0/#inbox/15aa997de25c63ca),
+* Networks: [comcast complaints example](Examples/3M.pdf)[,](https://mail.google.com/mail/u/0/#inbox/15aa997de25c63ca)
 [immigration](Examples/Migration/Migration.html), [movie genres](Examples/MovieLens/MovieLens.html)
 * Short-answer questions from the book: File `Week-6-short-answer.Rmd`
     - 12.1, 12.2, 12.3
